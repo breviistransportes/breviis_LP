@@ -1,0 +1,13 @@
+# Arquivos do editor
+*.dc.html
+
+# Uploads temporários
+uploads/
+
+# Briefing
+*.zip
+
+# Sistema
+.thumbnail
+Thumbs.db
+.DS_Store
