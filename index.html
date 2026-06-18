@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
@@ -15,6 +15,8 @@
 <body>
 <x-dc>
 <helmet>
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&amp;family=Hanken+Grotesk:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
@@ -97,6 +99,11 @@ input::placeholder,textarea::placeholder{ color:#5C6F84; }
 /* ===== DOR CAROUSEL ===== */
 .mob-dor-carousel{ scrollbar-width:none; }
 .mob-dor-carousel::-webkit-scrollbar{ display:none; }
+
+/* Touch devices: don't let card hover/tap effects stick (looks misaligned in carousel) */
+@media(hover:none){
+  .dor-card:hover, .ben-card:hover, .mod-card:hover{ animation:none!important; transform:none!important; box-shadow:none!important; border-color:rgba(255,255,255,.07)!important; }
+}
 </style>
 </helmet>
 
@@ -106,13 +113,13 @@ input::placeholder,textarea::placeholder{ color:#5C6F84; }
 <header style="position:sticky;top:0;z-index:80;background:rgba(10,22,34,.82);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.07);">
   <div class="mob-header" style="max-width:1180px;margin:0 auto;padding:13px 32px;display:flex;align-items:center;justify-content:space-between;gap:24px;">
     <a href="#topo" style="display:flex;align-items:center;gap:12px;text-decoration:none;">
-      <img src="assets/breviis-logo-full.png" alt="Breviis Transporte &amp; Logística" style="height:44px;width:auto;display:block;">
+      <img src="assets/breviis-logo-full.png" alt="Breviis Transporte &amp; LogÃ­stica" style="height:44px;width:auto;display:block;">
     </a>
     <nav class="nav-links" style="display:flex;align-items:center;gap:32px;font-size:14.5px;font-weight:500;">
       <a href="#dor" style="color:#B9C6D4;text-decoration:none;" style-hover="color:#fff;">Problemas</a>
       <a href="#beneficios" style="color:#B9C6D4;text-decoration:none;" style-hover="color:#fff;">Por que Breviis</a>
-      <a href="#solucao" style="color:#B9C6D4;text-decoration:none;" style-hover="color:#fff;">Solução</a>
-      <a href="#duvidas" style="color:#B9C6D4;text-decoration:none;" style-hover="color:#fff;">Dúvidas</a>
+      <a href="#solucao" style="color:#B9C6D4;text-decoration:none;" style-hover="color:#fff;">SoluÃ§Ã£o</a>
+      <a href="#duvidas" style="color:#B9C6D4;text-decoration:none;" style-hover="color:#fff;">DÃºvidas</a>
     </nav>
     <div style="display:flex;align-items:center;gap:16px;">
       <a href="tel:+551128066497" class="nav-links" style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#E7EEF6;text-decoration:none;letter-spacing:.02em;">(11) 2806-6497</a>
@@ -125,7 +132,7 @@ input::placeholder,textarea::placeholder{ color:#5C6F84; }
         </sc-if>
       </button>
       <a href="javascript:void(0)" onClick="{{ openForm }}" class="mob-cta-btn" style="display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:#0A1622;font-weight:700;font-size:14px;padding:11px 18px;border-radius:9px;text-decoration:none;transition:transform .2s,background .2s,box-shadow .2s;" style-hover="background:#FFD84D;transform:translateY(-2px);box-shadow:0 12px 26px -12px rgba(245,197,24,.55);">
-        Solicitar orçamento
+        Solicitar orÃ§amento
       </a>
     </div>
   </div>
@@ -134,13 +141,13 @@ input::placeholder,textarea::placeholder{ color:#5C6F84; }
   <div class="mob-menu-panel" style="position:fixed;inset:0;z-index:200;background:rgba(7,17,27,.97);display:flex;flex-direction:column;padding:0 24px 28px;backdrop-filter:blur(16px);">
     <div style="height:68px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.08);flex:none;">
       <img src="assets/breviis-logo-full.png" alt="Breviis" style="height:36px;width:auto;">
-      <button onClick="{{ toggleMenu }}" style="background:rgba(255,255,255,.1);border:none;border-radius:50%;width:36px;height:36px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:#fff;font-size:18px;line-height:1;transition:background .2s;" style-hover="background:rgba(255,255,255,.2);">✕</button>
+      <button onClick="{{ toggleMenu }}" style="background:rgba(255,255,255,.1);border:none;border-radius:50%;width:36px;height:36px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:#fff;font-size:18px;line-height:1;transition:background .2s;" style-hover="background:rgba(255,255,255,.2);">âœ•</button>
     </div>
     <nav style="display:flex;flex-direction:column;gap:0;padding-top:8px;flex:1;overflow-y:auto;">
       <a href="#dor" onClick="{{ toggleMenu }}" style="font-family:'Sora';font-weight:700;font-size:22px;color:#fff;text-decoration:none;padding:18px 0;border-bottom:1px solid rgba(255,255,255,.06);display:block;">Problemas</a>
       <a href="#beneficios" onClick="{{ toggleMenu }}" style="font-family:'Sora';font-weight:700;font-size:22px;color:#fff;text-decoration:none;padding:18px 0;border-bottom:1px solid rgba(255,255,255,.06);display:block;">Por que Breviis</a>
-      <a href="#solucao" onClick="{{ toggleMenu }}" style="font-family:'Sora';font-weight:700;font-size:22px;color:#fff;text-decoration:none;padding:18px 0;border-bottom:1px solid rgba(255,255,255,.06);display:block;">Solução</a>
-      <a href="#duvidas" onClick="{{ toggleMenu }}" style="font-family:'Sora';font-weight:700;font-size:22px;color:#fff;text-decoration:none;padding:18px 0;display:block;">Dúvidas</a>
+      <a href="#solucao" onClick="{{ toggleMenu }}" style="font-family:'Sora';font-weight:700;font-size:22px;color:#fff;text-decoration:none;padding:18px 0;border-bottom:1px solid rgba(255,255,255,.06);display:block;">SoluÃ§Ã£o</a>
+      <a href="#duvidas" onClick="{{ toggleMenu }}" style="font-family:'Sora';font-weight:700;font-size:22px;color:#fff;text-decoration:none;padding:18px 0;display:block;">DÃºvidas</a>
     </nav>
     <div style="display:flex;gap:12px;padding-top:20px;flex:none;">
       <a href="https://wa.me/551128066497" target="_blank" style="flex:1;display:flex;align-items:center;justify-content:center;gap:8px;background:#1FAF54;color:#fff;font-weight:700;font-size:14.5px;padding:14px;border-radius:12px;text-decoration:none;">
@@ -148,7 +155,7 @@ input::placeholder,textarea::placeholder{ color:#5C6F84; }
         WhatsApp
       </a>
       <a href="javascript:void(0)" onClick="{{ openForm }}" style="flex:1;display:flex;align-items:center;justify-content:center;background:var(--gold);color:#0A1622;font-weight:700;font-size:14.5px;padding:14px;border-radius:12px;text-decoration:none;">
-        Orçamento
+        OrÃ§amento
       </a>
     </div>
   </div>
@@ -156,7 +163,7 @@ input::placeholder,textarea::placeholder{ color:#5C6F84; }
 
 <!-- ============ HERO ============ -->
 <section id="topo" style="position:relative;overflow:hidden;background:#0A1622;">
-  <!-- HERO BG · opção D (faixa diagonal + foto recortada). Troque a imagem da frota aqui: -->
+  <!-- HERO BG Â· opÃ§Ã£o D (faixa diagonal + foto recortada). Troque a imagem da frota aqui: -->
   <div class="heroPhoto" style="position:absolute;inset:0;background:url(assets/frota-vw-hero-final.png) 55% center/cover;clip-path:polygon(56% 0,100% 0,100% 100%,40% 100%);z-index:0;"></div>
   <div style="position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,#0A1622 40%,rgba(10,22,34,.6) 60%,rgba(10,22,34,.2) 82%);"></div>
   <div class="heroBand" style="position:absolute;top:0;bottom:0;left:49%;width:120px;background:var(--gold);transform:skewX(-14deg);box-shadow:0 0 60px rgba(245,197,24,.45);z-index:2;"></div>
@@ -168,15 +175,15 @@ input::placeholder,textarea::placeholder{ color:#5C6F84; }
       <!-- LEFT -->
       <div>
         <div class="rv" style="display:inline-flex;align-items:center;gap:11px;font-family:'IBM Plex Mono',monospace;font-size:12.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:26px;">
-          <span style="width: 26px; height: 1px; background: var(--gold); display: block;"></span>Trazendo soluções logísticas há mais de 10 anos
+          <span style="width: 26px; height: 1px; background: var(--gold); display: block;"></span>Trazendo soluÃ§Ãµes logÃ­sticas hÃ¡ mais de 10 anos
         </div>
         <h1 class="rv d1" style="font-family:'Sora';font-weight:800;font-size:clamp(36px,5vw,60px);line-height:1.04;letter-spacing:-.02em;color:#fff;margin:0 0 22px;text-wrap:balance;">
-          Sua carga dedicada, <span style="color:var(--gold);">no prazo</span>, sem dor de cabeça.
+          Sua carga dedicada, <span style="color:var(--gold);">no prazo</span>, sem dor de cabeÃ§a.
         </h1>
-        <p class="rv d2" style="font-size:clamp(16px,1.5vw,18.5px);line-height:1.6;color:#AEBDCC;max-width:520px;margin:0 0 28px;">Frota dedicada, atendimento personalizado e veículo disponível pra urgência — atendendo indústrias, construtoras e distribuidoras em todo o Brasil.</p>
+        <p class="rv d2" style="font-size:clamp(16px,1.5vw,18.5px);line-height:1.6;color:#AEBDCC;max-width:520px;margin:0 0 28px;">Frota dedicada, atendimento personalizado e veÃ­culo disponÃ­vel pra urgÃªncia â€” atendendo indÃºstrias, construtoras e distribuidoras em todo o Brasil.</p>
         <div class="rv d3" style="display:flex;flex-wrap:wrap;gap:14px 26px;margin-bottom:32px;">
-          <span style="display:inline-flex;align-items:center;gap:9px;font-size:14.5px;color:#D4DEE8;"><span style="display:grid;place-items:center;width:20px;height:20px;border-radius:50%;background:rgba(245,197,24,.16);"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#F5C518" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"></path></svg></span>Veículo exclusivo</span>
-          <span style="display:inline-flex;align-items:center;gap:9px;font-size:14.5px;color:#D4DEE8;"><span style="display:grid;place-items:center;width:20px;height:20px;border-radius:50%;background:rgba(245,197,24,.16);"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#F5C518" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"></path></svg></span>Pronto pra urgência</span>
+          <span style="display:inline-flex;align-items:center;gap:9px;font-size:14.5px;color:#D4DEE8;"><span style="display:grid;place-items:center;width:20px;height:20px;border-radius:50%;background:rgba(245,197,24,.16);"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#F5C518" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"></path></svg></span>VeÃ­culo exclusivo</span>
+          <span style="display:inline-flex;align-items:center;gap:9px;font-size:14.5px;color:#D4DEE8;"><span style="display:grid;place-items:center;width:20px;height:20px;border-radius:50%;background:rgba(245,197,24,.16);"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#F5C518" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"></path></svg></span>Pronto pra urgÃªncia</span>
           <span style="display:inline-flex;align-items:center;gap:9px;font-size:14.5px;color:#D4DEE8;"><span style="display:grid;place-items:center;width:20px;height:20px;border-radius:50%;background:rgba(245,197,24,.16);"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#F5C518" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"></path></svg></span>Sem transtorno</span>
         </div>
         <div class="rv d4" style="display:flex;align-items:center;gap:18px;flex-wrap:wrap;">
@@ -189,7 +196,7 @@ input::placeholder,textarea::placeholder{ color:#5C6F84; }
       </div>
 
       <!-- RIGHT: FAB + INLINE FORM -->
-      <div style="position:relative;">
+      <div id="hero-form-col" style="position:relative;">
         <sc-if value="{{ notFormOpen }}" hint-placeholder-val="{{ true }}">
           <div class="mob-hide-fab" style="display:flex;flex-direction:column;align-items:center;gap:24px;animation:circleReveal .55s cubic-bezier(.16,.84,.44,1) both, fabFloat 3.2s ease-in-out .55s infinite;">
             <button onClick="{{ openForm }}" style="width:180px;height:180px;border-radius:50%;background:linear-gradient(145deg,#F5C518,#E6B000);border:none;cursor:pointer;display:grid;place-items:center;box-shadow:0 16px 48px -12px rgba(245,197,24,.35);transition:transform .3s cubic-bezier(.16,.84,.44,1),box-shadow .3s;" style-hover="transform:scale(1.08);box-shadow:0 24px 56px -10px rgba(245,197,24,.5);">
@@ -201,19 +208,19 @@ input::placeholder,textarea::placeholder{ color:#5C6F84; }
               </svg>
             </button>
             <div style="text-align:center;">
-              <div style="font-family:'Sora';font-weight:700;font-size:16px;color:#fff;letter-spacing:-.01em;">Solicitar orçamento</div>
+              <div style="font-family:'Sora';font-weight:700;font-size:16px;color:#fff;letter-spacing:-.01em;">Solicitar orÃ§amento</div>
               <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;color:var(--gold);margin-top:5px;text-transform:uppercase;">sem compromisso</div>
             </div>
           </div>
         </sc-if>
         <sc-if value="{{ formOpen }}" hint-placeholder-val="{{ false }}">
           <div style="background:linear-gradient(180deg,#14253B,#0F1D2E);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:26px;box-shadow:0 40px 80px -28px rgba(0,0,0,.7);animation:formBurst .55s cubic-bezier(.16,.84,.44,1) both;position:relative;">
-            <button onClick="{{ closeForm }}" style="position:absolute;top:14px;right:14px;width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.08);border:none;cursor:pointer;color:#8FA1B5;font-size:15px;display:grid;place-items:center;transition:background .2s,color .2s;" style-hover="background:rgba(255,255,255,.16);color:#fff;">✕</button>
+            <button onClick="{{ closeForm }}" style="position:absolute;top:14px;right:14px;width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.08);border:none;cursor:pointer;color:#8FA1B5;font-size:15px;display:grid;place-items:center;transition:background .2s,color .2s;" style-hover="background:rgba(255,255,255,.16);color:#fff;">âœ•</button>
             <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
             <div>
-              <div style="display:inline-flex;align-items:center;gap:8px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);background:rgba(245,197,24,.1);border:1px solid rgba(245,197,24,.25);padding:6px 11px;border-radius:100px;margin-bottom:14px;">Cotação sem compromisso</div>
-              <h2 style="font-family:'Sora';font-weight:700;font-size:20px;color:#fff;margin:0 0 4px;letter-spacing:-.01em;">Monte seu orçamento dedicado</h2>
-              <p style="font-size:13px;color:#9DAEBF;margin:0 0 16px;">Preencha e a gente retorna rápido no WhatsApp.</p>
+              <div style="display:inline-flex;align-items:center;gap:8px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);background:rgba(245,197,24,.1);border:1px solid rgba(245,197,24,.25);padding:6px 11px;border-radius:100px;margin-bottom:14px;">CotaÃ§Ã£o sem compromisso</div>
+              <h2 style="font-family:'Sora';font-weight:700;font-size:20px;color:#fff;margin:0 0 4px;letter-spacing:-.01em;">Monte seu orÃ§amento dedicado</h2>
+              <p style="font-size:13px;color:#9DAEBF;margin:0 0 16px;">Preencha e a gente retorna rÃ¡pido no WhatsApp.</p>
               <form onSubmit="{{ onSubmit }}" novalidate="true">
                 <div class="stack" style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
                   <label style="display:block;">
@@ -252,27 +259,27 @@ input::placeholder,textarea::placeholder{ color:#5C6F84; }
                   <label style="display:block;">
                     <span style="display:block;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#8FA1B5;margin-bottom:5px;">Tipo de carga*</span>
                     <select value="{{ tipo }}" onChange="{{ onTipo }}" style="width:100%;background:#0B1726;border:1px solid rgba(255,255,255,.13);border-radius:9px;padding:10px 11px;color:#E7EEF6;font-size:13.5px;outline:none;appearance:none;" style-focus="border-color:var(--gold);">
-                      <option value="" disabled="true">Selecione…</option>
+                      <option value="" disabled="true">Selecioneâ€¦</option>
                       <option value="Carga seca / geral">Carga seca / geral</option>
-                      <option value="Química / produto controlado">Química / controlada</option>
+                      <option value="QuÃ­mica / produto controlado">QuÃ­mica / controlada</option>
                       <option value="Paletizada / volumosa">Paletizada / volumosa</option>
-                      <option value="Volume pequeno / utilitária">Volume pequeno / utilitária</option>
+                      <option value="Volume pequeno / utilitÃ¡ria">Volume pequeno / utilitÃ¡ria</option>
                       <option value="Carreta completa">Carreta completa</option>
-                      <option value="Outro / não sei">Outro / não sei</option>
+                      <option value="Outro / nÃ£o sei">Outro / nÃ£o sei</option>
                     </select>
                     <sc-if value="{{ eTipo }}" hint-placeholder-val="{{ false }}"><span style="display:block;font-size:11px;color:#FF7A6B;margin-top:4px;">{{ eTipo }}</span></sc-if>
                   </label>
                 </div>
                 <label style="display:flex;align-items:flex-start;gap:9px;margin-top:14px;cursor:pointer;">
                   <input type="checkbox" checked="{{ lgpd }}" onChange="{{ onLgpd }}" style="margin-top:2px;width:15px;height:15px;accent-color:#F5C518;flex:none;">
-                  <span style="font-size:11px;line-height:1.45;color:#8FA1B5;">Concordo com a <a href="#" style="color:#B9C6D4;text-decoration:underline;">Política de Privacidade</a> e tratamento dos dados (LGPD).</span>
+                  <span style="font-size:11px;line-height:1.45;color:#8FA1B5;">Ao enviar seus dados, vocÃª concorda com nossa <a href="privacidade.html" target="_blank" style="color:#B9C6D4;text-decoration:underline;">PolÃ­tica de Privacidade</a>.</span>
                 </label>
                 <sc-if value="{{ eLgpd }}" hint-placeholder-val="{{ false }}"><span style="display:block;font-size:11px;color:#FF7A6B;margin-top:5px;">{{ eLgpd }}</span></sc-if>
                 <button type="submit" style="width:100%;margin-top:14px;display:inline-flex;align-items:center;justify-content:center;gap:9px;background:var(--gold);color:#0A1622;font-family:'Sora';font-weight:700;font-size:14.5px;padding:13px;border:none;border-radius:10px;cursor:pointer;transition:transform .2s,background .2s,box-shadow .2s;" style-hover="background:#FFD84D;transform:translateY(-2px);box-shadow:0 14px 30px -12px rgba(245,197,24,.55);">
-                  Quero meu veículo dedicado
+                  Quero meu veÃ­culo dedicado
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0A1622" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
                 </button>
-                <p style="text-align:center;font-size:11px;color:#7A8DA0;margin:10px 0 0;">Resposta rápida no WhatsApp</p>
+                <p style="text-align:center;font-size:11px;color:#7A8DA0;margin:10px 0 0;">Resposta rÃ¡pida no WhatsApp</p>
               </form>
             </div>
             </sc-if>
@@ -282,9 +289,9 @@ input::placeholder,textarea::placeholder{ color:#5C6F84; }
                 <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#3FD27E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"></path></svg>
               </div>
               <h2 style="font-family:'Sora';font-weight:700;font-size:20px;color:#fff;margin:0 0 8px;">Tudo certo!</h2>
-              <p style="font-size:13.5px;line-height:1.55;color:#AEBDCC;max-width:300px;margin:0 auto 20px;">Abrimos o WhatsApp com os dados. Se não abriu, toque abaixo.</p>
+              <p style="font-size:13.5px;line-height:1.55;color:#AEBDCC;max-width:300px;margin:0 auto 20px;">Abrimos o WhatsApp com os dados. Se nÃ£o abriu, toque abaixo.</p>
               <a href="https://wa.me/551128066497" target="_blank" style="display:inline-flex;align-items:center;justify-content:center;gap:9px;background:#1FAF54;color:#fff;font-weight:700;font-size:14px;padding:12px 22px;border-radius:10px;text-decoration:none;transition:transform .2s,background .2s;" style-hover="background:#25C062;transform:translateY(-2px);">Abrir WhatsApp</a>
-              <div><button onClick="{{ onNew }}" style="margin-top:14px;background:none;border:none;color:#8FA1B5;font-size:12.5px;text-decoration:underline;cursor:pointer;">Enviar outra cotação</button></div>
+              <div><button onClick="{{ onNew }}" style="margin-top:14px;background:none;border:none;color:#8FA1B5;font-size:12.5px;text-decoration:underline;cursor:pointer;">Enviar outra cotaÃ§Ã£o</button></div>
             </div>
             </sc-if>
           </div>
@@ -303,11 +310,11 @@ input::placeholder,textarea::placeholder{ color:#5C6F84; }
       </div>
       <div style="background:#0C1A29;padding:22px 24px;">
         <div style="font-family:'Sora';font-weight:800;font-size:clamp(24px,3vw,34px);color:#fff;line-height:1;">Unidades</div>
-        <div style="font-size:13px;color:#8FA1B5;margin-top:7px;">SP · MG</div>
+        <div style="font-size:13px;color:#8FA1B5;margin-top:7px;">SP Â· MG</div>
       </div>
       <div style="background:#0C1A29;padding:22px 24px;">
         <div style="font-family:'Sora';font-weight:800;font-size:clamp(24px,3vw,34px);color:#fff;line-height:1;">Atendemos</div>
-        <div style="font-size:13px;color:#8FA1B5;margin-top:7px;">Em todo o território nacional</div>
+        <div style="font-size:13px;color:#8FA1B5;margin-top:7px;">Em todo o territÃ³rio nacional</div>
       </div>
     </div>
   </div>
@@ -316,18 +323,18 @@ input::placeholder,textarea::placeholder{ color:#5C6F84; }
 <!-- ============ DOR ============ -->
 <section id="dor" style="background:#0C1A29;padding:clamp(64px,8vw,108px) 0;border-top:1px solid rgba(255,255,255,.05);">
   <div class="mob-inner" style="max-width:1180px;margin:0 auto;padding:0 32px;">
-    <div class="rv" style="display:inline-flex;align-items:center;gap:11px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:18px;"><span style="width:26px;height:1px;background:var(--gold);"></span>Você já passou por isso?</div>
+    <div class="rv" style="display:inline-flex;align-items:center;gap:11px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:18px;"><span style="width:26px;height:1px;background:var(--gold);"></span>VocÃª jÃ¡ passou por isso?</div>
     <h2 class="rv d1" style="font-family:'Sora';font-weight:800;font-size:clamp(28px,3.6vw,44px);line-height:1.08;letter-spacing:-.02em;color:#fff;margin:0 0 14px;max-width:760px;text-wrap:balance;">A dor de quem depende de frete</h2>
     <p class="rv d2" style="font-size:17px;color:#AEBDCC;margin:0 0 44px;max-width:560px;">Se reconheceu em pelo menos uma, a gente conhece a sua dor.</p>
 
     <div class="stack mob-dor-carousel" style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
       <div class="rv dor-card" style="background:#0F1D2E;border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:24px;transition:transform .28s cubic-bezier(.16,.84,.44,1),border-color .28s,box-shadow .28s;" style-hover="transform:translateY(-5px);border-color:rgba(245,197,24,.4);box-shadow:0 22px 44px -24px rgba(0,0,0,.7);">
         <span style="display:grid;place-items:center;width:34px;height:34px;border-radius:9px;background:rgba(255,122,107,.12);margin-bottom:16px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FF7A6B" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg></span>
-        <p style="font-size:15.5px;line-height:1.5;color:#D4DEE8;margin:0;">A transportadora atrasou e o <strong style="color:#fff;">cliente cobrou de você</strong>.</p>
+        <p style="font-size:15.5px;line-height:1.5;color:#D4DEE8;margin:0;">A transportadora atrasou e o <strong style="color:#fff;">cliente cobrou de vocÃª</strong>.</p>
       </div>
       <div class="rv dor-card d1" style="background:#0F1D2E;border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:24px;transition:transform .28s cubic-bezier(.16,.84,.44,1),border-color .28s,box-shadow .28s;" style-hover="transform:translateY(-5px);border-color:rgba(245,197,24,.4);box-shadow:0 22px 44px -24px rgba(0,0,0,.7);">
         <span style="display:grid;place-items:center;width:34px;height:34px;border-radius:9px;background:rgba(255,122,107,.12);margin-bottom:16px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FF7A6B" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg></span>
-        <p style="font-size:15.5px;line-height:1.5;color:#D4DEE8;margin:0;">Precisou de veículo na <strong style="color:#fff;">urgência</strong> e a transportadora sem veículo disponível.</p>
+        <p style="font-size:15.5px;line-height:1.5;color:#D4DEE8;margin:0;">Precisou de veÃ­culo na <strong style="color:#fff;">urgÃªncia</strong> e a transportadora sem veÃ­culo disponÃ­vel.</p>
       </div>
       <div class="rv dor-card d2" style="background:#0F1D2E;border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:24px;transition:transform .28s cubic-bezier(.16,.84,.44,1),border-color .28s,box-shadow .28s;" style-hover="transform:translateY(-5px);border-color:rgba(245,197,24,.4);box-shadow:0 22px 44px -24px rgba(0,0,0,.7);">
         <span style="display:grid;place-items:center;width:34px;height:34px;border-radius:9px;background:rgba(255,122,107,.12);margin-bottom:16px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FF7A6B" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg></span>
@@ -335,15 +342,15 @@ input::placeholder,textarea::placeholder{ color:#5C6F84; }
       </div>
       <div class="rv dor-card" style="background:#0F1D2E;border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:24px;transition:transform .28s cubic-bezier(.16,.84,.44,1),border-color .28s,box-shadow .28s;" style-hover="transform:translateY(-5px);border-color:rgba(245,197,24,.4);box-shadow:0 22px 44px -24px rgba(0,0,0,.7);">
         <span style="display:grid;place-items:center;width:34px;height:34px;border-radius:9px;background:rgba(255,122,107,.12);margin-bottom:16px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FF7A6B" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg></span>
-        <p style="font-size:15.5px;line-height:1.5;color:#D4DEE8;margin:0;">Ficou sem saber a <strong style="color:#fff;">localização da sua carga</strong>.</p>
+        <p style="font-size:15.5px;line-height:1.5;color:#D4DEE8;margin:0;">Ficou sem saber a <strong style="color:#fff;">localizaÃ§Ã£o da sua carga</strong>.</p>
       </div>
       <div class="rv dor-card d1" style="background:#0F1D2E;border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:24px;transition:transform .28s cubic-bezier(.16,.84,.44,1),border-color .28s,box-shadow .28s;" style-hover="transform:translateY(-5px);border-color:rgba(245,197,24,.4);box-shadow:0 22px 44px -24px rgba(0,0,0,.7);">
         <span style="display:grid;place-items:center;width:34px;height:34px;border-radius:9px;background:rgba(255,122,107,.12);margin-bottom:16px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FF7A6B" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg></span>
-        <p style="font-size:15.5px;line-height:1.5;color:#D4DEE8;margin:0;">Mandou produto controlado em uma <strong style="color:#fff;">transportadora sem licença</strong>.</p>
+        <p style="font-size:15.5px;line-height:1.5;color:#D4DEE8;margin:0;">Mandou produto controlado em uma <strong style="color:#fff;">transportadora sem licenÃ§a</strong>.</p>
       </div>
       <div class="rv dor-card d2" style="background:#0F1D2E;border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:24px;transition:transform .28s cubic-bezier(.16,.84,.44,1),border-color .28s,box-shadow .28s;" style-hover="transform:translateY(-5px);border-color:rgba(245,197,24,.4);box-shadow:0 22px 44px -24px rgba(0,0,0,.7);">
         <span style="display:grid;place-items:center;width:34px;height:34px;border-radius:9px;background:rgba(255,122,107,.12);margin-bottom:16px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FF7A6B" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg></span>
-        <p style="font-size:15.5px;line-height:1.5;color:#D4DEE8;margin:0;">Transportadora que <strong style="color:#fff;">não soluciona o seu problema</strong>.</p>
+        <p style="font-size:15.5px;line-height:1.5;color:#D4DEE8;margin:0;">Transportadora que <strong style="color:#fff;">nÃ£o soluciona o seu problema</strong>.</p>
       </div>
     </div>
 
@@ -355,24 +362,24 @@ input::placeholder,textarea::placeholder{ color:#5C6F84; }
 </section></div>
 
 
-<!-- ============ BENEFÍCIOS ============ -->
+<!-- ============ BENEFÃCIOS ============ -->
 <section id="beneficios" style="background:#0A1622;padding:clamp(64px,8vw,108px) 0;">
   <div class="mob-inner" style="max-width:1180px;margin:0 auto;padding:0 32px;">
     <div class="rv" style="display:inline-flex;align-items:center;gap:11px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:18px;"><span style="width: 26px; height: 1px; background: var(--gold);"></span>Por que Breviis?</div>
     <h2 class="rv d1" style="font-family:'Sora';font-weight:800;font-size:clamp(26px,3.4vw,42px);line-height:1.08;letter-spacing:-.02em;color:#fff;margin:0 0 44px;max-width:680px;text-wrap:balance;">O que muda quando a Breviis assume sua carga.</h2>
 
-    <div class="stack" style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
+    <div class="stack mob-dor-carousel" style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
       <div class="rv ben-card" style="background:#0F1D2E;border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:24px;transition:transform .28s cubic-bezier(.16,.84,.44,1),border-color .28s,box-shadow .28s;" style-hover="border-color:rgba(245,197,24,.45);transform:translateY(-5px);box-shadow:0 22px 44px -24px rgba(0,0,0,.7);">
         <span style="display:grid;place-items:center;width:30px;height:30px;border-radius:8px;background:rgba(245,197,24,.14);margin-bottom:16px;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#F5C518" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"></path></svg></span>
         <h3 style="font-family:'Sora';font-weight:700;font-size:16.5px;color:#fff;margin:0;">Sua carga chega no prazo combinado.</h3>
       </div>
       <div class="rv d1 ben-card" style="background:#0F1D2E;border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:24px;transition:transform .28s cubic-bezier(.16,.84,.44,1),border-color .28s,box-shadow .28s;" style-hover="border-color:rgba(245,197,24,.45);transform:translateY(-5px);box-shadow:0 22px 44px -24px rgba(0,0,0,.7);">
         <span style="display:grid;place-items:center;width:30px;height:30px;border-radius:8px;background:rgba(245,197,24,.14);margin-bottom:16px;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#F5C518" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"></path></svg></span>
-        <h3 style="font-family:'Sora';font-weight:700;font-size:16.5px;color:#fff;margin:0;">Veículo dedicado à sua necessidade.</h3>
+        <h3 style="font-family:'Sora';font-weight:700;font-size:16.5px;color:#fff;margin:0;">VeÃ­culo dedicado Ã  sua necessidade.</h3>
       </div>
       <div class="rv d2 ben-card" style="background:#0F1D2E;border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:24px;transition:transform .28s cubic-bezier(.16,.84,.44,1),border-color .28s,box-shadow .28s;" style-hover="border-color:rgba(245,197,24,.45);transform:translateY(-5px);box-shadow:0 22px 44px -24px rgba(0,0,0,.7);">
         <span style="display:grid;place-items:center;width:30px;height:30px;border-radius:8px;background:rgba(245,197,24,.14);margin-bottom:16px;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#F5C518" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"></path></svg></span>
-        <h3 style="font-family:'Sora';font-weight:700;font-size:16.5px;color:#fff;margin:0;">Experiência em cargas urgentes.</h3>
+        <h3 style="font-family:'Sora';font-weight:700;font-size:16.5px;color:#fff;margin:0;">ExperiÃªncia em cargas urgentes.</h3>
       </div>
       <div class="rv ben-card" style="background:#0F1D2E;border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:24px;transition:transform .28s cubic-bezier(.16,.84,.44,1),border-color .28s,box-shadow .28s;" style-hover="border-color:rgba(245,197,24,.45);transform:translateY(-5px);box-shadow:0 22px 44px -24px rgba(0,0,0,.7);">
         <span style="display:grid;place-items:center;width:30px;height:30px;border-radius:8px;background:rgba(245,197,24,.14);margin-bottom:16px;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#F5C518" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"></path></svg></span>
@@ -384,32 +391,32 @@ input::placeholder,textarea::placeholder{ color:#5C6F84; }
       </div>
       <div class="rv d2 ben-card" style="background:#0F1D2E;border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:24px;transition:transform .28s cubic-bezier(.16,.84,.44,1),border-color .28s,box-shadow .28s;" style-hover="border-color:rgba(245,197,24,.45);transform:translateY(-5px);box-shadow:0 22px 44px -24px rgba(0,0,0,.7);">
         <span style="display:grid;place-items:center;width:30px;height:30px;border-radius:8px;background:rgba(245,197,24,.14);margin-bottom:16px;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#F5C518" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"></path></svg></span>
-        <h3 style="font-family:'Sora';font-weight:700;font-size:16.5px;color:#fff;margin:0;">Suporte do início ao fim.</h3>
+        <h3 style="font-family:'Sora';font-weight:700;font-size:16.5px;color:#fff;margin:0;">Suporte do inÃ­cio ao fim.</h3>
       </div>
     </div>
 
   </div>
 </section>
 
-<!-- ============ SOLUÇÃO ============ -->
+<!-- ============ SOLUÃ‡ÃƒO ============ -->
 <section id="solucao" style="background:#0A1622;padding:clamp(64px,8vw,108px) 0;">
   <div class="mob-inner" style="max-width:1180px;margin:0 auto;padding:0 32px;">
     <div class="sol-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(36px,5vw,64px);align-items:center;">
       <div>
-        <div class="rv" style="display:inline-flex;align-items:center;gap:11px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:18px;"><span style="width:26px;height:1px;background:var(--gold);"></span>Transportando Soluções</div>
-        <h2 class="rv d1" style="font-family:'Sora';font-weight:800;font-size:clamp(28px,3.6vw,44px);line-height:1.08;letter-spacing:-.02em;color:#fff;margin:0 0 20px;text-wrap:balance;">Transporte dedicado para quem <span style="color:var(--gold);">não pode errar</span>.</h2>
-        <p class="rv d2" style="font-size:16.5px;line-height:1.62;color:#AEBDCC;margin:0 0 18px;">Um veículo exclusivo pra sua carga. Do ponto de coleta para o destino — <strong style="color:#fff;">sem transtorno, sem atraso</strong>.</p>
-        <p class="rv d2" style="font-size:16.5px;line-height:1.62;color:#AEBDCC;margin:0 0 26px;">Nosso diferencial é a <strong style="color: rgb(255, 255, 255);">versatilidade</strong>: do utilitário à carreta — temos o veículo certo pro seu tipo de carga, inclusive na demanda urgente.</p>
+        <div class="rv" style="display:inline-flex;align-items:center;gap:11px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:18px;"><span style="width:26px;height:1px;background:var(--gold);"></span>Transportando SoluÃ§Ãµes</div>
+        <h2 class="rv d1" style="font-family:'Sora';font-weight:800;font-size:clamp(28px,3.6vw,44px);line-height:1.08;letter-spacing:-.02em;color:#fff;margin:0 0 20px;text-wrap:balance;">Transporte dedicado para quem <span style="color:var(--gold);">nÃ£o pode errar</span>.</h2>
+        <p class="rv d2" style="font-size:16.5px;line-height:1.62;color:#AEBDCC;margin:0 0 18px;">Um veÃ­culo exclusivo pra sua carga. Do ponto de coleta para o destino â€” <strong style="color:#fff;">sem transtorno, sem atraso</strong>.</p>
+        <p class="rv d2" style="font-size:16.5px;line-height:1.62;color:#AEBDCC;margin:0 0 26px;">Nosso diferencial Ã© a <strong style="color: rgb(255, 255, 255);">versatilidade</strong>: do utilitÃ¡rio Ã  carreta â€” temos o veÃ­culo certo pro seu tipo de carga, inclusive na demanda urgente.</p>
         <div class="rv d3" style="display:flex;flex-direction:column;gap:13px;">
-          <div style="display:flex;align-items:flex-start;gap:12px;"><span style="display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--gold);flex:none;margin-top:1px;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#0A1622" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"></path></svg></span><span style="font-size:15.5px;color:#D4DEE8;line-height:1.45;">Coleta e entrega no <strong style="color:#fff;">horário que você define</strong></span></div>
-          <div style="display:flex;align-items:flex-start;gap:12px;"><span style="display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--gold);flex:none;margin-top:1px;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#0A1622" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"></path></svg></span><span style="font-size:15.5px;color:#D4DEE8;line-height:1.45;">Licenças pra <strong style="color:#fff;">produto controlado</strong> (PC, PF, IBAMA, Exército)</span></div>
-          <div style="display:flex;align-items:flex-start;gap:12px;"><span style="display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--gold);flex:none;margin-top:1px;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#0A1622" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"></path></svg></span><span style="font-size:15.5px;color:#D4DEE8;line-height:1.45;">Também atendemos <strong style="color:#fff;">fracionado e aéreo</strong> quando a operação necessita</span></div>
+          <div style="display:flex;align-items:flex-start;gap:12px;"><span style="display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--gold);flex:none;margin-top:1px;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#0A1622" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"></path></svg></span><span style="font-size:15.5px;color:#D4DEE8;line-height:1.45;">Coleta e entrega no <strong style="color:#fff;">horÃ¡rio que vocÃª define</strong></span></div>
+          <div style="display:flex;align-items:flex-start;gap:12px;"><span style="display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--gold);flex:none;margin-top:1px;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#0A1622" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"></path></svg></span><span style="font-size:15.5px;color:#D4DEE8;line-height:1.45;">LicenÃ§as pra <strong style="color:#fff;">produto controlado</strong> (PC, PF, IBAMA, ExÃ©rcito)</span></div>
+          <div style="display:flex;align-items:flex-start;gap:12px;"><span style="display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--gold);flex:none;margin-top:1px;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#0A1622" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"></path></svg></span><span style="font-size:15.5px;color:#D4DEE8;line-height:1.45;">TambÃ©m atendemos <strong style="color:#fff;">fracionado e aÃ©reo</strong> quando a operaÃ§Ã£o necessita</span></div>
         </div>
       </div>
       <div class="rv d2" style="position:relative;">
         <div style="border-radius:18px;overflow:hidden;border:1px solid rgba(255,255,255,.1);box-shadow:0 40px 80px -30px rgba(0,0,0,.7);aspect-ratio:4/3;background:url(assets/frota-vw-constellation-2.png) 65% center/cover;"></div>
         <div class="sol-badge" style="position:absolute;left:-14px;bottom:-14px;background:var(--gold);color:#0A1622;border-radius:14px;padding:16px 20px;box-shadow:0 20px 40px -16px rgba(0,0,0,.6);max-width:230px;">
-          <div style="font-family:'Sora';font-weight:800;font-size:17px;line-height:1.15;">Um veículo só pra sua carga.</div>
+          <div style="font-family:'Sora';font-weight:800;font-size:17px;line-height:1.15;">Um veÃ­culo sÃ³ pra sua carga.</div>
           <div style="font-size:12.5px;font-weight:500;margin-top:4px;opacity:.85;">Do ponto A ao B, sem transtorno.</div>
         </div>
       </div>
@@ -421,8 +428,8 @@ input::placeholder,textarea::placeholder{ color:#5C6F84; }
 <!-- ============ FAQ ============ -->
 <section id="duvidas" style="background:#0C1A29;padding:clamp(64px,8vw,108px) 0;">
   <div class="mob-inner" style="max-width:820px;margin:0 auto;padding:0 32px;">
-    <div class="rv" style="display:inline-flex;align-items:center;gap:11px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:18px;"><span style="width:26px;height:1px;background:var(--gold);"></span>Dúvidas frequentes</div>
-    <h2 class="rv d1" style="font-family:'Sora';font-weight:800;font-size:clamp(26px,3.4vw,42px);line-height:1.08;letter-spacing:-.02em;color:#fff;margin:0 0 38px;text-wrap:balance;">Suas objeções, respondidas.</h2>
+    <div class="rv" style="display:inline-flex;align-items:center;gap:11px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:18px;"><span style="width:26px;height:1px;background:var(--gold);"></span>DÃºvidas frequentes</div>
+    <h2 class="rv d1" style="font-family:'Sora';font-weight:800;font-size:clamp(26px,3.4vw,42px);line-height:1.08;letter-spacing:-.02em;color:#fff;margin:0 0 38px;text-wrap:balance;">Suas objeÃ§Ãµes, respondidas.</h2>
 
     <div style="display:flex;flex-direction:column;gap:12px;">
       <sc-for list="{{ faqs }}" as="item" hint-placeholder-count="7">
@@ -447,17 +454,17 @@ input::placeholder,textarea::placeholder{ color:#5C6F84; }
   <div style="position:absolute;inset:0;background:url(assets/frota-scania-tanque-nova.png) center 40%/cover;"></div>
   <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,17,27,.78),rgba(7,17,27,.92));"></div>
   <div class="mob-cta-inner" style="position:relative;max-width:820px;margin:0 auto;padding:clamp(72px,9vw,120px) 32px;text-align:center;">
-    <h2 class="rv" style="font-family:'Sora';font-weight:800;font-size:clamp(30px,4.6vw,56px);line-height:1.05;letter-spacing:-.02em;color:#fff;margin:0 0 18px;text-wrap:balance;">Sua carga não pode esperar.<br><span style="color:var(--gold);">E não precisa.</span></h2>
-    <p class="rv d1" style="font-size:18px;line-height:1.6;color:#C2CEDA;margin:0 auto 32px;max-width:540px;">Fala com a Breviis, recebe sua cotação dedicada e tira o problema da logística da sua mesa.</p>
+    <h2 class="rv" style="font-family:'Sora';font-weight:800;font-size:clamp(30px,4.6vw,56px);line-height:1.05;letter-spacing:-.02em;color:#fff;margin:0 0 18px;text-wrap:balance;">Sua carga nÃ£o pode esperar.<br><span style="color:var(--gold);">E nÃ£o precisa.</span></h2>
+    <p class="rv d1" style="font-size:18px;line-height:1.6;color:#C2CEDA;margin:0 auto 32px;max-width:540px;">Fala com a Breviis, recebe sua cotaÃ§Ã£o dedicada e tira o problema da logÃ­stica da sua mesa.</p>
     <a href="#topo" class="rv d2" style="display:inline-flex;align-items:center;gap:10px;background:var(--gold);color:#0A1622;font-family:'Sora';font-weight:700;font-size:16.5px;padding:16px 32px;border-radius:12px;text-decoration:none;transition:transform .2s,background .2s,box-shadow .2s;" style-hover="background:#FFD84D;transform:translateY(-2px);box-shadow:0 16px 34px -12px rgba(245,197,24,.55);">
-      Solicitar orçamento agora
+      Solicitar orÃ§amento agora
       <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#0A1622" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
     </a>
-    <p class="rv d3" style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.06em;color:#8FA1B5;margin:22px 0 0;">&nbsp;Resposta rápida no WhatsApp · Sem compromisso</p>
+    <p class="rv d3" style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.06em;color:#8FA1B5;margin:22px 0 0;">&nbsp;Resposta rÃ¡pida no WhatsApp Â· Sem compromisso</p>
 
     <div class="rv d3" style="margin-top:44px;background:rgba(15,29,46,.7);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:26px 28px;text-align:left;backdrop-filter:blur(8px);">
       <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;">P.S.</div>
-      <p style="font-size:15px;line-height:1.62;color:#C2CEDA;margin:0;">Transportadora boa você só percebe o valor quando a carga é crítica e o prazo aperta. A Breviis foi feita pra esse momento: veículo dedicado, disponível e sob medida, com gente de verdade cuidando da sua operação. <strong style="color:#fff;">+25 mil vendas já provaram. A próxima pode ser a sua.</strong></p>
+      <p style="font-size:15px;line-height:1.62;color:#C2CEDA;margin:0;">Transportadora boa vocÃª sÃ³ percebe o valor quando a carga Ã© crÃ­tica e o prazo aperta. A Breviis foi feita pra esse momento: veÃ­culo dedicado, disponÃ­vel e sob medida, com gente de verdade cuidando da sua operaÃ§Ã£o. <strong style="color:#fff;">+25 mil vendas jÃ¡ provaram. A prÃ³xima pode ser a sua.</strong></p>
     </div>
   </div>
 </section>
@@ -468,20 +475,20 @@ input::placeholder,textarea::placeholder{ color:#5C6F84; }
     <div class="stack" style="display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:36px;padding-bottom:40px;">
       <div>
         <div style="margin-bottom:16px;">
-          <img src="assets/breviis-logo-full.png" alt="Breviis Transporte &amp; Logística" style="height:52px;width:auto;display:block;">
+          <img src="assets/breviis-logo-full.png" alt="Breviis Transporte &amp; LogÃ­stica" style="height:52px;width:auto;display:block;">
         </div>
-        <p style="font-size:13.5px;line-height:1.6;color:#7E91A4;margin:0;max-width:300px;">Transporte dedicado sob medida para indústrias e distribuidoras. Base em Guarulhos/SP e Belo Horizonte/MG, atendendo todo o Brasil.</p>
+        <p style="font-size:13.5px;line-height:1.6;color:#7E91A4;margin:0;max-width:300px;">Transporte dedicado sob medida para indÃºstrias e distribuidoras. Base em Guarulhos/SP e Belo Horizonte/MG, atendendo todo o Brasil.</p>
       </div>
       <div>
         <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:#5E7287;margin-bottom:16px;">Contato</div>
         <div style="display:flex;flex-direction:column;gap:11px;">
           <a href="https://wa.me/551128066497" target="_blank" style="font-size:14px;color:#C2CEDA;text-decoration:none;display:flex;align-items:center;gap:9px;" style-hover="color:#fff;">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0;opacity:.7;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.533 5.858L.057 23.571a.75.75 0 0 0 .921.921l5.713-1.476A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.694 9.694 0 0 1-4.951-1.356l-.355-.211-3.688.952.972-3.591-.231-.369A9.693 9.693 0 0 1 2.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/></svg>
-            WhatsApp · (11) 2806-6497
+            WhatsApp Â· (11) 2806-6497
           </a>
           <a href="tel:+551128066497" style="font-size:14px;color:#C2CEDA;text-decoration:none;display:flex;align-items:center;gap:9px;" style-hover="color:#fff;">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;opacity:.7;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.5a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.69h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 10a16 16 0 0 0 6.09 6.09l.91-.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-            Telefone · (11) 2806-6497
+            Telefone Â· (11) 2806-6497
           </a>
           <a href="mailto:comercial@breviis.com.br" style="font-size:14px;color:#C2CEDA;text-decoration:none;display:flex;align-items:center;gap:9px;" style-hover="color:#fff;">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;opacity:.7;"><rect x="2" y="4" width="20" height="16" rx="2"></rect><polyline points="2,4 12,13 22,4"></polyline></svg>
@@ -494,18 +501,18 @@ input::placeholder,textarea::placeholder{ color:#5C6F84; }
         <div style="display:flex;flex-direction:column;gap:11px;font-size:14px;color:#C2CEDA;">
           <span>Transporte dedicado</span>
           <span>Carga fracionada</span>
-          <span>Transporte aéreo</span>
-          <span>Pedidos com urgência</span>
+          <span>Transporte aÃ©reo</span>
+          <span>Pedidos com urgÃªncia</span>
         </div>
       </div>
     </div>
     <div style="border-top:1px solid rgba(255,255,255,.06);padding-top:24px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;">
-      <p style="font-size:12px;color:#5E7287;margin:0;max-width:560px;line-height:1.5;">© <span>{{ year }}</span> Breviis Transporte &amp; Logística. Seus dados são tratados conforme a LGPD — veja nossa <a href="#" style="color:#8FA1B5;text-decoration:underline;">Política de Privacidade</a>.</p>
+      <p style="font-size:12px;color:#5E7287;margin:0;max-width:560px;line-height:1.5;">Â© <span>{{ year }}</span> Breviis Transporte &amp; LogÃ­stica. Seus dados sÃ£o tratados conforme a LGPD â€” veja nossa <a href="privacidade.html" style="color:#8FA1B5;text-decoration:underline;">PolÃ­tica de Privacidade</a>.</p>
       <div style="display:flex;gap:10px;flex-wrap:wrap;">
         <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.08em;color:#5E7287;border:1px solid rgba(255,255,255,.1);border-radius:100px;padding:5px 11px;">P. CIVIL</span>
         <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.08em;color:#5E7287;border:1px solid rgba(255,255,255,.1);border-radius:100px;padding:5px 11px;">P. FEDERAL</span>
         <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.08em;color:#5E7287;border:1px solid rgba(255,255,255,.1);border-radius:100px;padding:5px 11px;">IBAMA</span>
-        <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.08em;color:#5E7287;border:1px solid rgba(255,255,255,.1);border-radius:100px;padding:5px 11px;">EXÉRCITO</span>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.08em;color:#5E7287;border:1px solid rgba(255,255,255,.1);border-radius:100px;padding:5px 11px;">EXÃ‰RCITO</span>
       </div>
     </div>
   </div>
@@ -519,7 +526,7 @@ input::placeholder,textarea::placeholder{ color:#5C6F84; }
     WhatsApp
   </a>
   <a href="javascript:void(0)" onClick="{{ openForm }}" style="flex:1;display:flex;align-items:center;justify-content:center;background:var(--gold);color:#0A1622;font-weight:700;font-size:13.5px;padding:12px;border-radius:10px;text-decoration:none;">
-    Solicitar orçamento
+    Solicitar orÃ§amento
   </a>
 </div>
 </x-dc>
@@ -581,11 +588,11 @@ class Component extends DCLogic {
     const s = this.state; const e = {};
     if(!s.nome.trim()) e.nome = 'Informe seu nome';
     if(s.whats.replace(/\D/g,'').length < 10) e.whats = 'WhatsApp incompleto';
-    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(s.email)) e.email = 'E-mail inválido';
+    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(s.email)) e.email = 'E-mail invÃ¡lido';
     if(!s.origem.trim()) e.origem = 'Informe a origem';
     if(!s.destino.trim()) e.destino = 'Informe o destino';
     if(!s.tipo) e.tipo = 'Selecione o tipo';
-    if(!s.lgpd) e.lgpd = 'É preciso aceitar para continuar';
+    if(!s.lgpd) e.lgpd = 'Ã‰ preciso aceitar para continuar';
     return e;
   }
 
@@ -595,7 +602,7 @@ class Component extends DCLogic {
     if(Object.keys(e).length){ this.setState({ errors:e }); return; }
     const s = this.state;
     const num = (this.props.whatsappNumber || '551128066497').replace(/\D/g, '');
-    const L = ['Olá, Breviis! Quero uma cotação de transporte dedicado.', '', 'Nome: ' + s.nome];
+    const L = ['OlÃ¡, Breviis! Quero uma cotaÃ§Ã£o de transporte dedicado.', '', 'Nome: ' + s.nome];
     if(s.empresa) L.push('Empresa: ' + s.empresa);
     L.push('Origem: ' + s.origem, 'Destino: ' + s.destino);
     if(s.peso) L.push('Peso aprox.: ' + s.peso);
@@ -606,7 +613,20 @@ class Component extends DCLogic {
   };
 
   newQuote = ()=> this.setState({ sent:false });
-  openForm  = ()=>{ this.setState({ formOpen:true, menuOpen:false }); setTimeout(()=>window.scrollTo({ top:0, behavior:'smooth' }),80); };
+  openForm  = ()=>{
+    this.setState({ formOpen:true, menuOpen:false });
+    setTimeout(()=>{
+      if(window.innerWidth <= 900){
+        const el = document.getElementById('hero-form-col');
+        if(el){
+          const top = el.getBoundingClientRect().top + window.pageYOffset - 70;
+          window.scrollTo({ top: Math.max(0, top), behavior:'smooth' });
+          return;
+        }
+      }
+      window.scrollTo({ top:0, behavior:'smooth' });
+    }, 110);
+  };
   closeForm = ()=> this.setState({ formOpen:false, sent:false });
   toggleMenu = ()=> this.setState(s=>({ menuOpen:!s.menuOpen }));
   stopProp  = (e)=> e.stopPropagation();
@@ -616,13 +636,13 @@ class Component extends DCLogic {
   renderVals(){
     const s = this.state; const er = s.errors || {};
     const faqData = [
-      { q:'E o seguro da minha carga?', a:'Toda carga viaja com o respaldo certo pra cada tipo de mercadoria e um consultor acompanhando a operação de ponta a ponta — inclusive produto controlado, com nossas licenças oficiais (Polícia Civil, Polícia Federal, IBAMA e Exército).' },
-      { q:'Vocês atendem a minha região?', a:'Base em Guarulhos/SP e Belo Horizonte/MG, com atendimento em todo o território nacional. Se sua rota está em território nacional, nós atendemos.' },
-      { q:'Vão ter veículo disponível quando eu precisar?', a:'É exatamente o nosso forte. Frota diversificada e atendimento preparado pra demanda urgente — colocamos veículo na rua quando outros dizem que não dá.' },
-      { q:'Qual o prazo de entrega?', a:'No dedicado, a carga vai direto, sem transtorno nem espera. O prazo é definido com você na cotação — e a gente trabalha obcecado por cumprir.' },
-      { q:'Que tipo de carga vocês transportam?', a:'Carga seca em geral (alimentos, grãos, chapas, peças, paletes etc.) e produtos químicos/controlados, com licenças oficiais.' },
-      { q:'Tenho uma urgência, dá pra hoje?', a:'É a nossa especialidade em pedidos com urgência: veículo disponível sob medida, com coleta e entrega no horário que você definir.' },
-      { q:'Como faço pra contratar?', a:'Solicite o orçamento aqui pelo formulário ou no WhatsApp. Sem compromisso — o consultor retorna com a solução dedicada pra sua operação.' }
+      { q:'E o seguro da minha carga?', a:'Toda carga viaja com o respaldo certo pra cada tipo de mercadoria e um consultor acompanhando a operaÃ§Ã£o de ponta a ponta â€” inclusive produto controlado, com nossas licenÃ§as oficiais (PolÃ­cia Civil, PolÃ­cia Federal, IBAMA e ExÃ©rcito).' },
+      { q:'VocÃªs atendem a minha regiÃ£o?', a:'Base em Guarulhos/SP e Belo Horizonte/MG, com atendimento em todo o territÃ³rio nacional. Se sua rota estÃ¡ em territÃ³rio nacional, nÃ³s atendemos.' },
+      { q:'VÃ£o ter veÃ­culo disponÃ­vel quando eu precisar?', a:'Ã‰ exatamente o nosso forte. Frota diversificada e atendimento preparado pra demanda urgente â€” colocamos veÃ­culo na rua quando outros dizem que nÃ£o dÃ¡.' },
+      { q:'Qual o prazo de entrega?', a:'No dedicado, a carga vai direto, sem transtorno nem espera. O prazo Ã© definido com vocÃª na cotaÃ§Ã£o â€” e a gente trabalha obcecado por cumprir.' },
+      { q:'Que tipo de carga vocÃªs transportam?', a:'Carga seca em geral (alimentos, grÃ£os, chapas, peÃ§as, paletes etc.) e produtos quÃ­micos/controlados, com licenÃ§as oficiais.' },
+      { q:'Tenho uma urgÃªncia, dÃ¡ pra hoje?', a:'Ã‰ a nossa especialidade em pedidos com urgÃªncia: veÃ­culo disponÃ­vel sob medida, com coleta e entrega no horÃ¡rio que vocÃª definir.' },
+      { q:'Como faÃ§o pra contratar?', a:'Solicite o orÃ§amento aqui pelo formulÃ¡rio ou no WhatsApp. Sem compromisso â€” o consultor retorna com a soluÃ§Ã£o dedicada pra sua operaÃ§Ã£o.' }
     ];
     return {
       nome:s.nome, empresa:s.empresa, whats:s.whats, email:s.email, origem:s.origem, destino:s.destino, peso:s.peso, tipo:s.tipo, lgpd:s.lgpd,
@@ -639,3 +659,4 @@ class Component extends DCLogic {
 </script>
 </body>
 </html>
+
